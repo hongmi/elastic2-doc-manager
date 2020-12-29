@@ -1,0 +1,37 @@
+{
+  "mainAddress": "mongo:27017",
+  "oplogFile": "oplog.timestamp",
+  "noDump": false,
+  "batchSize": -1,
+  "verbosity": 1,
+  "continueOnError": false,
+  "__logging": {
+    "__type": "file",
+    "__filename": "mongo-connector.log",
+    "__format": "%(asctime)s [%(levelname)s] %(name)s:%(lineno)d - %(message)s",
+    "__rotationWhen": "D",
+    "__rotationInterval": 1,
+    "__rotationBackups": 10,
+    "__type": "syslog",
+    "__host": "localhost:514"
+  },
+  "authentication": {
+    "adminUsername": "root",
+    "password": "root",
+    "__passwordFile": "mongo-connector.pwd"
+  },
+  "namespaces": {
+      "trans.double11": "double11.a",
+      "trans.trans_1m_180day.days": "days.b",
+      "trans.trans_1m_180day": "trans_1m_180day.c"
+  },
+  "docManagers": [
+    {
+      "docManager": "elastic2_doc_manager",
+      "targetURL": "http://elasticsearch:9200",
+      "__bulkSize": 1000,
+      "__uniqueKey": "_id",
+        "__autoCommitInterval": null
+    }
+  ]
+}
